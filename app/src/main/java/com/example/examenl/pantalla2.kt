@@ -21,8 +21,7 @@ class pantalla2 : AppCompatActivity() {
         fechaHoy=FechaActual()
         var tiempoHoy=fechaHoy
         creditos =calcularCreditos()
-        //
-
+        //.
         val resultado="""
             Nombre Completo: Luis Alberto Ticona Alcocer
             Jugo en fecha:$tiempoHoy
