@@ -1,5 +1,6 @@
 package com.example.examenl
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -14,7 +15,8 @@ class MainActivity : AppCompatActivity() {
     var fibonacci= mutableListOf<Int>(10)
 
     var numero:String=""
-
+    var numeroUsu:Int=0
+    var ObtenerNumero:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity() {
             Hilo()
             Fibonacci()
             resultado()
+        }
+        binding.btnpasar.setOnClickListener {
+            pasarPantalla2()
         }
 
     }
@@ -40,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                             txtconteo.text = "$i"
                             pltxtnumero.isVisible =true
                             numero2 = binding.pltxtnumero.text.toString()
+                            if (numero==numero2){
+                                binding.btnpasar.isVisible=true
+                            }
                         }
                     }
                 }
@@ -70,6 +78,18 @@ class MainActivity : AppCompatActivity() {
     private fun resultado(){
         var aleatorio:Int = (0..9).random()
         numero = fibonacci[aleatorio].toString()
+        ObtenerNumero=numero.toInt()
         binding.txtmostrar.text = numero
+
     }
+    private fun pasarPantalla2(){
+        resultado()
+        val valor= ObtenerNumero
+        val intent= Intent(this,pantalla2::class.java)
+        intent.apply {
+            putExtra("valor", valor)
+        }
+        startActivity(intent)
+    }
+
 }
