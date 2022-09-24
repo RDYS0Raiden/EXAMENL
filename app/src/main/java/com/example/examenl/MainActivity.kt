@@ -28,8 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun Hilo(){
+        //Thread == hilo no te olvides
         var numero2:String=""
-
+        //un hilo debe tener try , catch y al final debe tener .start()
         Thread{
             try {
                 for (i in 1..10){
